@@ -196,6 +196,22 @@ public class ArbolBinarioBusqueda {
         return contarHojasRecursivo(nodo.izquierdo) + contarHojasRecursivo(nodo.derecho);
     }
 
+    //Problema #1
+    public int contarNodos() {
+        return contarNodosRecursivo(raiz);
+    }
+
+    private int contarNodosRecursivo(Nodo nodo) {
+
+        if (nodo == null) {
+            return 0;
+        }
+
+        return 1
+                + contarNodosRecursivo(nodo.izquierdo)
+                + contarNodosRecursivo(nodo.derecho);
+    }
+    
     // ============================================================
     // RECORRIDOS DEL ARBOL
     // ============================================================
