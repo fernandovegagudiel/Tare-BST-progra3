@@ -34,6 +34,22 @@ public class Principal {
 
         System.out.println("===== Arbol Binario de Busqueda =====");
         System.out.println("Tamanio: " + arbol.tamanio());
+        System.out.println("Contar nodos (recursivo): " + arbol.contarNodos());
+        System.out.println("\n--- Problema 2: Arbol balanceado ---");
+        System.out.println("Arbol principal balanceado?: " + arbol.esBalanceado());
+
+        ArbolBinarioBusqueda arbolDesbalanceado = new ArbolBinarioBusqueda();
+
+        arbolDesbalanceado.insertar(1);
+        arbolDesbalanceado.insertar(2);
+        arbolDesbalanceado.insertar(3);
+        arbolDesbalanceado.insertar(4);
+        arbolDesbalanceado.insertar(5);
+
+        System.out.println("\nArbol desbalanceado de prueba:");
+        arbolDesbalanceado.imprimirArbol();
+
+        System.out.println("Arbol desbalanceado balanceado?: " + arbolDesbalanceado.esBalanceado());
         System.out.println("Altura:  " + arbol.altura());
         System.out.println("Minimo:  " + arbol.minimo());
         System.out.println("Maximo:  " + arbol.maximo());
@@ -78,6 +94,7 @@ public class Principal {
         System.out.println("\n--- Estado final ---");
         arbol.imprimirArbol();
         System.out.println("Tamanio final: " + arbol.tamanio());
+        System.out.println("Contar nodos final: " + arbol.contarNodos());
         System.out.println("Altura final:  " + arbol.altura());
 
         /*
