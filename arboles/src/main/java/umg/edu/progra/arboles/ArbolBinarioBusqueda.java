@@ -301,6 +301,121 @@ public class ArbolBinarioBusqueda {
 
         return nodo;
     }
+    //Soluciones extras que se piedieron 
+    
+ // ============================================================
+ // EXTRA E1
+ // K-ESIMO MENOR
+ // ============================================================
+
+ public int kEsimoMenor(int k) {
+
+     if (k <= 0 || k > contarNodos()) {
+         throw new IllegalArgumentException(
+                 "El valor de k debe estar entre 1 y la cantidad de nodos");
+     }
+
+     Contador contador = new Contador();
+     Resultado resultado = new Resultado();
+
+     kEsimoMenorRecursivo(raiz, k, contador, resultado);
+
+     return resultado.valor;
+ }
+
+ private void kEsimoMenorRecursivo(
+         Nodo nodo, int k, Contador contador, Resultado resultado) {
+
+     if (nodo == null || resultado.encontrado) {
+         return;
+     }
+
+     kEsimoMenorRecursivo(nodo.izquierdo, k, contador, resultado);
+
+     contador.valor++;
+
+     if (contador.valor == k) {
+         resultado.valor = nodo.dato;
+         resultado.encontrado = true;
+         return;
+     }
+
+     kEsimoMenorRecursivo(nodo.derecho, k, contador, resultado);
+ }
+
+ 
+ // EXTRA E2
+ // IMPRIMIR RANGO ORDENADO
+
+
+ public void imprimirRangoOrdenado(int min, int max) {
+     imprimirRangoOrdenadoRecursivo(raiz, min, max);
+     System.out.println();
+ }
+
+ private void imprimirRangoOrdenadoRecursivo(Nodo nodo, int min, int max) {
+
+     if (nodo == null) {
+         return;
+     }
+
+     if (nodo.dato > min) {
+         imprimirRangoOrdenadoRecursivo(nodo.izquierdo, min, max);
+     }
+
+     if (nodo.dato >= min && nodo.dato <= max) {
+         System.out.print(nodo.dato + " ");
+     }
+
+     if (nodo.dato < max) {
+         imprimirRangoOrdenadoRecursivo(nodo.derecho, min, max);
+     }
+ }
+
+ // ============================================================
+ // EXTRA E3
+ // DIAMETRO DEL ARBOL
+ // ============================================================
+
+ public int diametro() {
+     return diametroRecursivo(raiz);
+ }
+
+ private int diametroRecursivo(Nodo nodo) {
+
+     if (nodo == null) {
+         return 0;
+     }
+
+     int alturaIzquierda = alturaRecursiva(nodo.izquierdo);
+     int alturaDerecha = alturaRecursiva(nodo.derecho);
+
+     int diametroPorRaiz = alturaIzquierda + alturaDerecha + 2;
+
+     int diametroIzquierdo = diametroRecursivo(nodo.izquierdo);
+     int diametroDerecho = diametroRecursivo(nodo.derecho);
+
+     int mayorSubarbol = diametroIzquierdo > diametroDerecho
+             ? diametroIzquierdo
+             : diametroDerecho;
+
+     return diametroPorRaiz > mayorSubarbol
+             ? diametroPorRaiz
+             : mayorSubarbol;
+ }
+
+ // ============================================================
+ // CLASES AUXILIARES PARA EXTRA E1
+ // ============================================================
+
+ private static class Contador {
+     int valor;
+ }
+
+ private static class Resultado {
+     int valor;
+     boolean encontrado;
+ }
     // ============================================================
     // RECORRIDOS DEL ARBOL
     // ============================================================
