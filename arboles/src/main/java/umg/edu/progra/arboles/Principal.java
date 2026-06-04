@@ -65,6 +65,27 @@ public class Principal {
         arbolRoto.imprimirArbol();
 
         System.out.println("Arbol roto es BST valido?: " + arbolRoto.esBSTValido());
+        System.out.println("\n--- Problema 4: Ancestro comun mas bajo ---");
+
+        ArbolBinarioBusqueda arbolLCA = new ArbolBinarioBusqueda();
+
+        arbolLCA.insertar(50);
+        arbolLCA.insertar(30);
+        arbolLCA.insertar(70);
+        arbolLCA.insertar(20);
+        arbolLCA.insertar(40);
+        arbolLCA.insertar(60);
+        arbolLCA.insertar(80);
+        arbolLCA.insertar(10);
+
+        System.out.println("LCA(10, 40): "
+                + arbolLCA.ancestroComunMasBajo(10, 40));
+
+        System.out.println("LCA(10, 80): "
+                + arbolLCA.ancestroComunMasBajo(10, 80));
+
+        System.out.println("LCA(60, 80): "
+                + arbolLCA.ancestroComunMasBajo(60, 80));
         System.out.println("Altura:  " + arbol.altura());
         System.out.println("Minimo:  " + arbol.minimo());
         System.out.println("Maximo:  " + arbol.maximo());
