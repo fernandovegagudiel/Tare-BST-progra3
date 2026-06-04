@@ -111,7 +111,33 @@ public class Principal {
         System.out.println("\n--- Busquedas ---");
         System.out.println("Contiene 40? " + arbol.contiene(40));
         System.out.println("Contiene 99? " + arbol.contiene(99));
+        System.out.println("\n--- Problema 5: Invertir arbol ---");
 
+        ArbolBinarioBusqueda arbolInvertido = new ArbolBinarioBusqueda();
+
+        arbolInvertido.insertar(50);
+        arbolInvertido.insertar(30);
+        arbolInvertido.insertar(70);
+        arbolInvertido.insertar(20);
+        arbolInvertido.insertar(40);
+        arbolInvertido.insertar(60);
+        arbolInvertido.insertar(80);
+        arbolInvertido.insertar(10);
+
+        System.out.println("\nAntes de invertir:");
+        arbolInvertido.imprimirArbol();
+
+        System.out.print("InOrden antes: ");
+        arbolInvertido.inOrden();
+
+        arbolInvertido.invertir();
+
+        System.out.println("\nDespues de invertir:");
+        arbolInvertido.imprimirArbol();
+
+        System.out.print("InOrden despues: ");
+        arbolInvertido.inOrden();
+       
         System.out.println("\n--- Eliminacion ---");
         System.out.println("Eliminando 20 (nodo con 1 hijo)...");
         arbol.eliminar(20);
